@@ -57,7 +57,7 @@ export class TeacherTableComponent implements OnInit {
     
     if (!value.trim()) {
       this.getTeacherData();
-      return;
+      return; 
 
     } 
     const searchValue=value.toLowerCase();
