@@ -92,6 +92,21 @@ const deleteTeacher = async (id) => {
     });
 }
 
+const searchTeacher = async (name) =>{
+    const sql =`SELECT * FROM teacher WHERE name LIKE ?`
+    return new Promise((resolve, reject) => {
+        knex_db
+            .raw(sql,['%name%'])
+            .then((teacher) => {
+                resolve(teacher);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+    });
+}
+  
+
 const readStudents = async () => {
     const sql = `SELECT * FROM student`
     return new Promise((resolve, reject) => {
@@ -162,6 +177,22 @@ const deleteStudent = async (id) => {
     });
 }
 
+const searchStudent = async (name) =>{
+    const sql =`SELECT * FROM student WHERE name LIKE ?`
+    return new Promise((resolve, reject) => {
+        knex_db
+            .raw(sql,['%name%'])
+            .then((student) => {
+                resolve(student);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+    });
+}
+  
+
+
 module.exports = {
     readTeachers,
     readStudents,
@@ -172,5 +203,7 @@ module.exports = {
     readStudentInfo,
     readTeacherInfo,
     updateStudent,
-    updateTeacher
+    updateTeacher,
+    searchTeacher,
+    searchStudent,
 };

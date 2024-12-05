@@ -53,22 +53,16 @@ export class TeacherTableComponent implements OnInit {
 
  
 
-  search(value) {
+  searchTeacher(value:string) {
+    this.selected = 'Teachers';
+    this.service.searchTeacher(value).subscribe((response) => {
+        this.teacherData = response;
+    },  (error) => {
+      console.log('ERROR - ', error)
+    })
+  }  
+     
     
-    if (!value.trim()) {
-      this.getTeacherData();
-      return; 
-
-    } 
-    const searchValue=value.toLowerCase();
-
-    this.teacherData=this.teacherData.filter(teacher=>
-      teacher.name.toLowerCase().includes(searchValue)
-    );
-  }
-    
-    
-
   deleteTeacher(itemid) {
     const test = {
       id: itemid

@@ -51,18 +51,16 @@ export class StudentTableComponent implements OnInit {
     })
   }
 
-  search(value) {
-    if (!value.trim()) {
-      this.studentData();
-      return;
+  searchStudent(value:string) {
+    this.selected = 'Students';
+    this.service.searchStudent(value).subscribe((response) => {
+        this.studentData = response;
+    },  (error) => {
+      console.log('ERROR - ', error)
+    })
+  }  
 
-    } 
-    const searchValue=value.toLowerCase();
+  }
+  
 
-    this.studentData=this.studentData.filter(student=>
-      student.name.toLowerCase().includes(searchValue)
-    );
-  }
-   
-  }
 

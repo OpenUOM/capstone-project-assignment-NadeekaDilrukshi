@@ -11,6 +11,8 @@ const {
   readTeacherInfo,
   updateStudent,
   updateTeacher,
+  searchTeacher,
+  searchStudent,
   dbinitialize
 } = require ("./database.js");
 
@@ -78,6 +80,15 @@ app.post("/deleteTeacher", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
+app.get("/searchTeacher", async function (req, res) {
+  const name=req.query.name;
+  console.log("Request received to get Teacher Info:",name);
+  let data = await searchTeacher(name);
+
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(data));
+});
+
 // ============== Student Related endpoints ==============
 
 app.get("/listStudents", async function (req, res) {
@@ -134,5 +145,16 @@ app.post("/editStudent", async function (req, res) {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
+
+app.get("/searchStudent", async function (req, res) {
+  const name=req.query.name;
+  console.log("Request received to get Student Info:",name);
+  let data = await searchStudent(name);
+
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(data));
+});
+
+
 
 module.exports = app;
