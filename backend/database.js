@@ -27,8 +27,8 @@ const readTeachers = async () => {
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
-            .then((teachers) => {
-                resolve(teachers);
+            .then((teacher) => {
+                resolve(teacher);
             })
             .catch((error) => {
                 reject(error);
@@ -96,7 +96,7 @@ const searchTeacher = async (name) =>{
     const sql =`SELECT * FROM teacher WHERE name LIKE ?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql,['%name%'])
+            .raw(sql,['%${name}%'])
             .then((teacher) => {
                 resolve(teacher);
             })
@@ -181,7 +181,7 @@ const searchStudent = async (name) =>{
     const sql =`SELECT * FROM student WHERE name LIKE ?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql,['%name%'])
+            .raw(sql,['%${name%}'])
             .then((student) => {
                 resolve(student);
             })
