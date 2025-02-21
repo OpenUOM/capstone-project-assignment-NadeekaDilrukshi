@@ -53,9 +53,9 @@ export class TeacherTableComponent implements OnInit {
 
  
 
-  searchTeacher(value:string) {
+  searchTeacher(query:string) {
     this.selected = 'Teachers';
-    this.service.searchTeacher(value).subscribe((response) => {
+    this.service.searchTeacher(query).subscribe((response) => {
         this.teacherData = response;
     },  (error) => {
       console.log('ERROR - ', error)

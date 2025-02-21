@@ -51,9 +51,9 @@ export class StudentTableComponent implements OnInit {
     })
   }
 
-  searchStudent(value:string) {
+  searchStudent(query:string) {
     this.selected = 'Students';
-    this.service.searchStudent(value).subscribe((response) => {
+    this.service.searchStudent(query).subscribe((response) => {
         this.studentData = response;
     },  (error) => {
       console.log('ERROR - ', error)

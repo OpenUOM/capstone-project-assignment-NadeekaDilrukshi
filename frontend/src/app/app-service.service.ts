@@ -26,16 +26,16 @@ export class AppServiceService {
     return this.http.get(`${this.ROOT_URL}/api/listTeachers`)
   }
 
-  searchTeacher(value:string){
-    return this.http.get(`${this.ROOT_URL}/api/searchTeacher?name= ${value}`)
+  searchTeacher(name:string){
+    return this.http.get(`${this.ROOT_URL}/api/searchTeacher?name= ${name}`)
   }
 
   getStudentData(){
     return this.http.get(`${this.ROOT_URL}/api/listStudents`)
   }
 
-  searchStudent(value:string){
-    return this.http.get(`${this.ROOT_URL}/api/searchStudent?name= ${value}`)
+  searchStudent(name:string){
+    return this.http.get(`${this.ROOT_URL}/api/searchStudent?name= ${name}`)
   }
 
    

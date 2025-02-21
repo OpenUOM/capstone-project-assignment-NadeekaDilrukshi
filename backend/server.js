@@ -1,6 +1,8 @@
 const express = require ("express");
+import bodyParser from "body-parser";
 
-const {
+import {
+  dbinitialize,
   readTeachers,
   readStudents,
   addStudent,
@@ -13,8 +15,8 @@ const {
   updateTeacher,
   searchTeacher,
   searchStudent,
-  dbinitialize
-} = require ("./database.js");
+  
+} from ".database.js";
 
 const app = express();
 const bodyParser = require  ("body-parser");
@@ -81,7 +83,7 @@ app.post("/deleteTeacher", async function (req, res) {
 });
 
 app.get("/searchTeacher", async function (req, res) {
-  const name=req.query.name;
+  const { name }= req.query;
   console.log("Request received to get Teacher Info:",name);
   let data = await searchTeacher(name);
 
@@ -147,7 +149,7 @@ app.post("/editStudent", async function (req, res) {
 });
 
 app.get("/searchStudent", async function (req, res) {
-  const name=req.query.name;
+  const { name }= req.query;
   console.log("Request received to get Student Info:",name);
   let data = await searchStudent(name);
 
