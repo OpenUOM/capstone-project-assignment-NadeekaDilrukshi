@@ -50,18 +50,7 @@ export class TeacherTableComponent implements OnInit {
       console.log('ERROR - ', error)
     })
   }
-
  
-
-  searchTeacher(query:string) {
-    this.selected = 'Teachers';
-    this.service.searchTeacher(query).subscribe((response) => {
-        this.teacherData = response;
-    },  (error) => {
-      console.log('ERROR - ', error)
-    })
-  }  
-     
     
   deleteTeacher(itemid) {
     const test = {
@@ -71,4 +60,19 @@ export class TeacherTableComponent implements OnInit {
       this.getTeacherData()
     })
   }
+
+  search(value:string) {
+    let foundItems = [];
+    if (value.length <= 0) {
+      this.getTeacherData();
+    } else {
+      foundItems= this.teacherData.filter((teacher) => 
+         teacher[0].name.toLowerCase().includes(value.toLowerCase())
+          
+      );
+      this.teacherData = foundItems;
+    }
+    
+  }
+
 }

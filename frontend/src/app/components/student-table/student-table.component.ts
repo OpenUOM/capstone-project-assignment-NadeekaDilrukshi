@@ -14,11 +14,13 @@ export class StudentTableComponent implements OnInit {
   faPenSquare = faPenSquare;
   studentData: any;
   selected: any;
+  
 
   constructor(private service : AppServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.getStudentData();
+    
   }
 
   addNewStudent(){
@@ -51,16 +53,18 @@ export class StudentTableComponent implements OnInit {
     })
   }
 
-  searchStudent(query:string) {
-    this.selected = 'Students';
-    this.service.searchStudent(query).subscribe((response) => {
-        this.studentData = response;
-    },  (error) => {
-      console.log('ERROR - ', error)
-    })
-  }  
-
+  search(value:string) {
+    let foundItems = [];
+    if (value.length <= 0) {
+      this.getStudentData();
+    } else {
+      foundItems= this.studentData.filter((student) => 
+         student[0].name.toLowerCase().includes(value.toLowerCase())
+          
+      );
+      this.studentData = foundItems;
+    }
+    
   }
+}
   
-
-

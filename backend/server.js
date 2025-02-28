@@ -23,7 +23,7 @@ const bodyParser = require  ("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/dbinitialize", async function (req, res) {
+app.get("/api/dbinitialize", async function (req, res) {
   console.log("DB is getting initialized");
   let data = await dbinitialize();
 
@@ -84,7 +84,7 @@ app.post("/deleteTeacher", async function (req, res) {
 
 app.get("/searchTeacher", async function (req, res) {
   const { name }= req.query;
-  console.log("Request received to get Teacher Info:",name);
+  console.log("Request received to search teacher",name);
   let data = await searchTeacher(name);
 
   res.setHeader("Content-Type", "application/json");
@@ -150,7 +150,7 @@ app.post("/editStudent", async function (req, res) {
 
 app.get("/searchStudent", async function (req, res) {
   const { name }= req.query;
-  console.log("Request received to get Student Info:",name);
+  console.log("Request received to search student",name);
   let data = await searchStudent(name);
 
   res.setHeader("Content-Type", "application/json");
