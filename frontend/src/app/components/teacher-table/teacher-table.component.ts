@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { faTrash, faPlus, faPenSquare } from '@fortawesome/free-solid-svg-icons';
 import { AppServiceService } from '../../app-service.service';
+
+interface teacher {
+  
+  id: number;
+  name: string;
+  age: number;
+  
+}
 @Component({
   selector: 'app-teacher-table',
   templateUrl: './teacher-table.component.html',
@@ -12,7 +20,12 @@ export class TeacherTableComponent implements OnInit {
   faTrash = faTrash;
   faPlus = faPlus;
   faPenSquare = faPenSquare;
-  teacherData: any;
+  dummyData : teacher[] = [
+    {id:1,name: 'Siripala Nonis', age:54},
+    {id:2,name: 'Padma Gamage', age:44},
+    {id:3,name: 'Maduranga Athapaththu', age:34},
+  ]
+  teacherData: teacher[]= this.dummyData;
   selected: any;
 
   constructor(private service: AppServiceService, private router: Router) { }
@@ -45,7 +58,7 @@ export class TeacherTableComponent implements OnInit {
   getTeacherData() {
     this.selected = 'Teachers';
     this.service.getTeacherData().subscribe((response) => {
-      this.teacherData = Object.keys(response).map((key) => [response[key]]);
+      this.teacherData = Object.keys(response).map((key) => response[key]);
     }, (error) => {
       console.log('ERROR - ', error)
     })
@@ -62,7 +75,7 @@ export class TeacherTableComponent implements OnInit {
   }
 
   search(value:string) {
-    let foundItems = [];
+    let foundItems:teacher[]= [];
     if (value.length <= 0) {
       this.getTeacherData();
     } else {

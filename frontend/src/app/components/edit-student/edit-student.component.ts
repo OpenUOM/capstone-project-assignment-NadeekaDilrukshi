@@ -22,7 +22,7 @@ export class EditStudentComponent implements OnInit {
 
   getStudentData(){
     let student = {
-      id : this.navigation?.extras?.state?.id
+      id : this.navigation.extras.state.id
     }
     this.service.getOneStudentData(student).subscribe((response)=>{
       this.studentData = response[0];
@@ -32,7 +32,7 @@ export class EditStudentComponent implements OnInit {
   }
 
   editStudent(values){
-    values.id = this.navigation?.extras?.state?.id;
+    values.id = this.navigation.extras.state.id;
     this.service.editStudent(values).subscribe((response)=>{
       this.studentData = response[0];
     },(error)=>{

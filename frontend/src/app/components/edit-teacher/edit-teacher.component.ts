@@ -23,7 +23,7 @@ export class EditTeacherComponent implements OnInit {
 
   getTeacherData(){
     let teacher = {
-      id : this.navigation?.extras?.state?.id
+        id : this.navigation.extras.state.id
     }
     this.service.getOneTeacherData(teacher).subscribe((response)=>{
       this.teacherData = response[0];
@@ -33,7 +33,7 @@ export class EditTeacherComponent implements OnInit {
   }
 
   editTeacher(values){
-    values.id = this.navigation?.extras?.state?.id;
+    values.id = this.navigation.extras.state.id;
     this.service.editTeacher(values).subscribe((response)=>{
       this.teacherData = response[0];
     },(error)=>{
