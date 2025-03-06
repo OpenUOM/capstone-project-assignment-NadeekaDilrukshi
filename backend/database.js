@@ -1,4 +1,4 @@
-const dbConnection = require("./sqlite3");
+const dbConnection = require("./sqlite");
 
 dbConnection
   .getDbConnection()
