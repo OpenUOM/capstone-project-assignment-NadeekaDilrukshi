@@ -3,13 +3,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { faTrash, faPlus, faPenSquare } from '@fortawesome/free-solid-svg-icons';
 import { AppServiceService } from '../../app-service.service';
 
-interface teacher {
-  
-  id: number;
-  name: string;
-  age: number;
-  
-}
+
 @Component({
   selector: 'app-teacher-table',
   templateUrl: './teacher-table.component.html',
@@ -20,12 +14,9 @@ export class TeacherTableComponent implements OnInit {
   faTrash = faTrash;
   faPlus = faPlus;
   faPenSquare = faPenSquare;
-  dummyData : teacher[] = [
-    {id:1,name: 'Siripala Nonis', age:54},
-    {id:2,name: 'Padma Gamage', age:44},
-    {id:3,name: 'Maduranga Athapaththu', age:34},
-  ]
-  teacherData: teacher[]= this.dummyData;
+ 
+  
+  teacherData: any;
   selected: any;
 
   constructor(private service: AppServiceService, private router: Router) { }
@@ -75,7 +66,7 @@ export class TeacherTableComponent implements OnInit {
   }
 
   search(value:string) {
-    let foundItems:teacher[]= [];
+    let foundItems =[];
     if (value.length <= 0) {
       this.getTeacherData();
     } else {

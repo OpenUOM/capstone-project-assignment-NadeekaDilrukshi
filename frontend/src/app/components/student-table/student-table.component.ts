@@ -24,7 +24,7 @@ export class StudentTableComponent implements OnInit {
     {id:2,name: 'Nadun Wijesiri',age:28,hometown:'Gampaha'},
     {id:3,name: 'Sawani Natasha',age:26,hometown:'Kandy'},
   ]
-  studentData:Student[] = this.dummyData;
+  studentData:any;
   selected: any;
  
   constructor(private service : AppServiceService, private router: Router) { }
@@ -65,7 +65,7 @@ export class StudentTableComponent implements OnInit {
   }
 
   search(value:string) {
-    let foundItems:Student[] = [];
+    let foundItems :Student[];
     if (value.length <= 0) {
       this.getStudentData();
     } else {
