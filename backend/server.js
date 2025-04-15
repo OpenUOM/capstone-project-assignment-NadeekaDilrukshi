@@ -13,8 +13,7 @@ const {
   readTeacherInfo,
   updateStudent,
   updateTeacher,
-  searchTeacher,
-  searchStudent,
+  
   
 } = require ("./database.js");
 
