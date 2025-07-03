@@ -81,14 +81,8 @@ app.post("/deleteTeacher", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
-app.get("/searchTeacher", async function (req, res) {
-  const { name }= req.query;
-  console.log("Request received to search teacher",name);
-  let data = await searchTeacher(name);
 
-  res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(data));
-});
+
 
 // ============== Student Related endpoints ==============
 
@@ -147,14 +141,6 @@ app.post("/editStudent", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
-app.get("/searchStudent", async function (req, res) {
-  const { name }= req.query;
-  console.log("Request received to search student",name);
-  let data = await searchStudent(name);
-
-  res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(data));
-});
 
 
 
