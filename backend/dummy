@@ -11,13 +11,15 @@ CREATE TABLE IF NOT EXISTS student (
   hometown TEXT NOT NULL
 );
 INSERT INTO student[
-    {id:'1',name: 'Amal Perera',age:23,hometown:'Colombo'},
-    {id:'2',name: 'Nadun Wijesiri',age:28,hometown:'Gampaha'},
-    {id:'3',name: 'Sawani Natasha',age:26,hometown:'Kandy'},
+    { id: 20001, name: 'Supun Mihiranga', age: 10, hometown: 'Colombo'},
+    { id: 20002, name: 'Sandun Perera', age: 9, hometown: 'Galle'},
+    { id: 20003, name: 'Isuri De Silva', age: 10, hometown: 'Kandy'},
   ]
 
 INSERT INTO teacher[
-    {id:'23',name:'Amali Perera',age:'35'},
-    {id:'34',name:'Bilal Fernando',age:'55'},
-    {id:'23',name:'Weerasiri',age:'56'},
+  { id: 10001, name: 'Kusuma Ranasinghe', age: 45},
+  { id: 10002, name: 'Saman De Silva', age: 40},
+  { id: 10003, name: 'Parasanna Mahagamage', age: 30},
+    
+   
 ]
