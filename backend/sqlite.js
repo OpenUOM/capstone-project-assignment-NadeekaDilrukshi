@@ -6,12 +6,10 @@ const connectDatabase = async () => {
 
   if (process.env.NODE_ENV === "test" || process.env.NODE_ENV === "test-backend") {
     return new sqlite3.Database(":memory:", sqlite3.OPEN_READWRITE);
-      // in memory DB for testing, readwrite + create not needed
-    return new sqlite3.Database(":memory:");
+   
   } else {
     return new sqlite3.Database('./db.sqlite', sqlite3.OPEN_READWRITE);
-    // open with readwrite + create to avoid SQLITE_CANTOPEN
-    return new sqlite3.Database('./db.sqlite',sqlite3.OPEN_READWRITE| sqlite3.OPEN_CREATE)
+    
   }
 }
 

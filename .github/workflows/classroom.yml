@@ -1,7 +1,11 @@
 name: Autograding Tests
-'on':
-- workflow_dispatch
-- repository_dispatch
+'on': 
+  push:
+    branches:
+      -main
+
+      - workflow_dispatch
+      - repository_dispatch
 permissions:
   checks: write
   actions: read
@@ -10,7 +14,11 @@ jobs:
   run-autograding-tests:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
-    steps:
+    steps: 
+    - name: Setup Node.js 16
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Backend List Teachers

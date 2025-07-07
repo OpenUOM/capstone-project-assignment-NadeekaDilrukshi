@@ -54,6 +54,16 @@ export class TeacherTableComponent implements OnInit {
       console.log('ERROR - ', error)
     })
   }
+
+  getStudentData() {
+    this.selected = 'Student';
+    this.service.getStudentData().subscribe((response) => {
+      this.teacherData = response;
+    }, (error) => {
+      console.log('ERROR - ', error)
+    })
+  }
+
  
     
   deleteTeacher(itemid) {
@@ -67,12 +77,12 @@ export class TeacherTableComponent implements OnInit {
 
   search(value){
     let foundItems =[];
-    if (value.length < 0){
+    if (value.length <= 0){
       this.getTeacherData();
 
     } else{
-      let b = this.teacherData.filter((teacher) =>{
-        if (teacher[0].name.toLowerCase().indexOf(value) > -1){
+      let b = this.teacherData.filter((teacher) => {
+        if (teacher[0].name.toLowerCase().indexOf(value) > -1) {
           foundItems.push(teacher)
         }
       });

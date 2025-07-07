@@ -13,6 +13,7 @@ export class EditStudentComponent implements OnInit {
   
 
   constructor(private service : AppServiceService, private router: Router) { }
+  
   navigation = this.router.getCurrentNavigation();
  
 
