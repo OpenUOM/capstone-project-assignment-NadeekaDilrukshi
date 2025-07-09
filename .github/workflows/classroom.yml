@@ -4,8 +4,8 @@ name: Autograding Tests
     branches:
       -main
 
-      - workflow_dispatch
-      - repository_dispatch
+      workflow_dispatch
+      repository_dispatch
 permissions:
   checks: write
   actions: read
